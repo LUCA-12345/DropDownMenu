@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dropdown Menu Example</title>
+    <style>
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="dropdown">
+      <button>Dropdown Button</button>
+      <ul class="dropdown-menu">
+        <li>Option 1</li>
+        <li>Option 2</li>
+        <li>Option 3</li>
+      </ul>
+    </div>
+
+    <script>
+      var dropdownButton = document.querySelector(".dropdown button");
+      var dropdownMenu = document.querySelector(".dropdown-menu");
+      dropdownButton.addEventListener("click", function (event) {
+        if (dropdownMenu.style.display === "block") {
+          dropdownMenu.style.display = "none";
+        } else {
+          dropdownMenu.style.display = "block";
+        }
+        event.stopPropagation();
+      });
+
+      document.addEventListener("click", function (event) {
+        if (!event.target.closest(".dropdown")) {
+          dropdownMenu.style.display = "none";
+        }
+      });
+      //Closes on Scroll, not what you were talking about but still could be cool
+      document.addEventListener("scroll", function (event) {
+        dropdownMenu.style.display = "none";
+      });
+    </script>
+  </body>
+</html>
